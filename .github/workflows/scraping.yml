@@ -1,4 +1,4 @@
-name: Execute Scappring automatically
+name: Execute Scraping automatically
 
 on:
   schedule:
@@ -13,12 +13,20 @@ jobs:
       - name: 📥 Clone the repository
         uses: actions/checkout@v3
 
-      - name: 📦 Install Node.js
+      - name: 📦 Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '16.20.2'
 
-      - name: 📦 Dendency install
+      - name: 🚀 Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: 📦 Install dependencies
         run: npm install
 
       - name: 🔐 Variables (Twilio)
