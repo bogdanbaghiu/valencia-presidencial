@@ -1,33 +1,32 @@
-name: Ejecutar scraping automáticamente
+name: Execute Scappring automatically
 
 on:
   schedule:
-    # Ejecutar todos los días a las 07:00, 11:00, 15:00, 17:00, 19:00 y 21:00 UTC (puedes ajustar)
     - cron: '0 7,9,13,17,18,19 * * *'
-  workflow_dispatch:  # Para poder ejecutarlo manualmente desde la interfaz de GitHub
+  workflow_dispatch:
 
 jobs:
   ejecutar-scraping:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Clonar el repositorio
+      - name: 📥 Clone the repository
         uses: actions/checkout@v3
 
-      - name: 📦 Instalar Node.js
+      - name: 📦 Install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'  # Usa la versión que uses localmente
 
-      - name: 📦 Instalar dependencias
+      - name: 📦 Dendency install
         run: npm install
 
-      - name: 🔐 Cargar variables de entorno (Twilio)
+      - name: 🔐 Variables (Twilio)
         run: |
           echo "TWILIO_ACCOUNT_SID=${{ secrets.TWILIO_ACCOUNT_SID }}" >> .env
           echo "TWILIO_AUTH_TOKEN=${{ secrets.TWILIO_AUTH_TOKEN }}" >> .env
           echo "TWILIO_FROM_WHATSAPP=${{ secrets.TWILIO_FROM_WHATSAPP }}" >> .env
           echo "TWILIO_TO_WHATSAPP=${{ secrets.TWILIO_TO_WHATSAPP }}" >> .env
 
-      - name: 🚀 Ejecutar script
+      - name: 🚀 Execute script
         run: node index.js
