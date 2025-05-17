@@ -1,0 +1,3 @@
+# Ignorar archivos que contienen las claves de API
+.env
+config.json
