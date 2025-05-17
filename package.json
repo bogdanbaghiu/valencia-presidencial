@@ -1,0 +1,17 @@
+{
+    "name": "valencia-presidencial",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "dotenv": "^16.5.0",
+        "express": "^5.1.0",
+        "luxon": "^3.6.1",
+        "moment-timezone": "^0.5.48",
+        "node-schedule": "^2.1.1",
+        "puppeteer": "^21.3.8",
+        "twilio": "^5.6.1"
+    }
+}

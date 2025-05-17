@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code execution</title>
+    <style>
+        #mensaje {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Run the Voting Code</h1>
+    <button onclick="executeCode()">Execute the code</button>
+
+    <h2 id="message"></h2> 
+
+    <script>
+        async function executeCode() {
+            const elementMessage = document.getElementById('message');
+            elementMessage.innerText = 'Running...';
+            try {
+                const response = await fetch('/execute');
+                if (response.ok) {
+                    elementMessage.innerText = 'Code executed successfully!';
+                    elementMessage.style.color = 'green';
+                } else {
+                    elementMessage.innerText = 'There was an error executing the code';
+                    elementMessage.style.color = 'red';
+                }
+            } catch (error) {
+                elementMessage.innerText = 'Error contacting the server';
+                elementMessage.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
