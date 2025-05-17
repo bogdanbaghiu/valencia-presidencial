@@ -31,7 +31,7 @@ const electoralColleges = [
     { sectie: '877', name: 'Gandia', url: 'https://prezenta.roaep.ro/prezidentiale18052025/?presence-abroad-uat=3460&region=abroad&presence-abroad-locality=13214' }
 ];
 
-const schedules = ['11:45', '15:45', '19:50', '20:00', '21:00', '21:05', '21:10'];
+const schedules = ['11:44', '15:44', '19:49', '20:00', '20:59', '21:05', '21:10'];
 
 schedules.forEach(hour => {
     const [privateHour, minute] = hour.split(':').map(Number);
