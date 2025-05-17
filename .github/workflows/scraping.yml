@@ -16,7 +16,7 @@ jobs:
       - name: 📦 Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Usa la versión que uses localmente
+          node-version: '20'
 
       - name: 📦 Dendency install
         run: npm install
