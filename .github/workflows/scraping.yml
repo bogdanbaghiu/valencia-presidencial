@@ -2,8 +2,8 @@ name: Execute Scraping automatically
 
 on:
   schedule:
-    - cron: '0 7,9,13,17,18,19 * * *'
-  workflow_dispatch:
+    - cron: '0 7,9,13,17,18,19 * * *' # Los horarios de ejecución automática
+  workflow_dispatch: # Permite ejecutar manualmente desde la UI
 
 jobs:
   ejecutar-scraping:
@@ -19,7 +19,7 @@ jobs:
           node-version: '16.20.2'
 
       - name: 🚀 Cache Node.js modules
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
